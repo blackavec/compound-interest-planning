@@ -3,7 +3,7 @@ const monthlyData = ({ month, interest, totalInterest, balance, currency }) =>
     ({ month, interest, totalInterest, balance, currency })
 const roundFix = (amount) => parseFloat((Math.round(amount * 100) / 100).toFixed(2))
 
-module.exports.calculate = async function ({
+module.exports.calculate = function ({
   initialInvestmentAmount,
   initialInvestmentCurrency,
   duration,

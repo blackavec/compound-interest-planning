@@ -1,29 +1,15 @@
 
 const Table = require("cli-table")
-const currencyFormatter = require('currency-formatter')
 
+const schema = require('./schema')
+const { transform } = require('./transformation')
 
-const format = (number, currency) => (
-    currencyFormatter.format(number, {
-        locale: 'en-US',
-        thousandsSeparator: ',',
-        decimalSeparator: '.',
-        code: currency,
-    })
-)
-
-module.exports.preview = async function (data) {
+module.exports.preview = function (data) {
     var table = new Table({
-        head: ['Month', 'Daily interest', 'Interest', 'Total Interest', 'Balance']
+        head: schema.preview
     })
 
-    data.map(({ month, interest, totalInterest, balance, currency }) => table.push([
-        month, 
-        format(interest / 30, currency),
-        format(interest, currency), 
-        format(totalInterest, currency),
-        format(balance, currency)
-    ]))
+    data.map(data => table.push(transform(data)))
 
     console.log(table.toString())
 }
