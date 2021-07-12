@@ -1,0 +1,14 @@
+{
+  "name": "compound-interest-planning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "cli-table": "^0.3.6",
+    "currency-formatter": "^1.5.8",
+    "prompt": "^1.1.0"
+  }
+}
